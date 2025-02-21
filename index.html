@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Vault Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav id="main-nav">
+        <ul class="nav-list">
+            <li class="nav-item active" data-section="vault">Vault</li>
+            <li class="nav-item" data-section="accounts">Accounts</li>
+            <li class="nav-item" data-section="about">About Us</li>
+            <li class="nav-item" data-section="settings">Settings</li>
+        </ul>
+    </nav>
+
+    <nav id="auth-nav" style="display: none;">
+        <ul class="nav-list">
+            <li class="nav-item active" data-section="signup">Sign Up</li>
+            <li class="nav-item" data-section="login">Log In</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="signup-section">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" name="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="signup-email" required>
+                </div>
+                <div class="form-group password-container">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="signup-password" required>
+                    <span class="password-toggle" id="signup-password-toggle">👁️</span>
+                </div>
+                <div class="form-group password-container">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
+                    <span class="password-toggle" id="signup-confirm-password-toggle">👁️</span>
+                </div>
+                <div class="form-group">
+                    <label for="signup-birthday">Birthday</label>
+                    <input type="date" id="signup-birthday" name="signup-birthday">
+                </div>
+                <div class="form-group">
+                    <label for="signup-gender">Gender</label>
+                    <select id="signup-gender" name="signup-gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+            <div class="signup-login-toggle">
+                <a href="#" id="login-link">Already have an account? Log in</a>
+            </div>
+        </div>
+
+        <div class="login-section" style="display: none;">
+            <h2>Log In</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-identifier">Username or Email</label>
+                    <input type="text" id="login-identifier" name="login-identifier" required>
+                </div>
+                <div class="form-group password-container">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="login-password" required>
+                    <span class="password-toggle" id="login-password-toggle">👁️</span>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+            <div class="signup-login-toggle">
+                <a href="#" id="signup-link">Need an account? Sign up</a>
+            </div>
+        </div>
+
+        <div class="password-manager-section" id="vault-section">
+            <h2>Vault</h2>
+
+            <div class="vault-form">
+                <h3>Add New Vault</h3>
+                <form id="add-vault-form">
+                    <div class="form-group">
+                        <label for="vault-title">Title</label>
+                        <input type="text" id="vault-title" name="vault-title" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="use-username" name="use-username">
+                        <label for="use-username" class="checkbox-label">Username (Optional)</label>
+                        <div class="optional-field" id="username-field">
+                            <input type="text" id="vault-username" name="vault-username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="use-email" name="use-email">
+                        <label for="use-email" class="checkbox-label">Email (Optional)</label>
+                        <div class="optional-field" id="email-field">
+                            <input type="email" id="vault-email" name="vault-email">
+                        </div>
+                    </div>
+                    <div class="form-group password-container">
+                        <label for="vault-password">Password</label>
+                        <input type="password" id="vault-password" name="vault-password" required>
+                        <span class="password-toggle" id="vault-password-toggle">👁️</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="use-pin" name="use-pin">
+                        <label for="use-pin" class="checkbox-label">Use PIN (4-16 digits)</label>
+                        <div class="optional-field" id="pin-field">
+                            <input type="text" id="vault-pin" name="vault-pin" placeholder="Enter PIN (4-16 digits)" inputmode="numeric" pattern="[0-9]*">
+                        </div>
+                    </div>
+                    <button type="submit">Add Vault</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="password-manager-section" id="accounts-section" style="display: none;">
+            <h2>Accounts</h2>
+            <div class="vault-list">
+                <div id="vaults-container">
+                    <p>No vaults added yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="password-manager-section" id="about-section" style="display: none;">
+            <h2>About Us</h2>
+            <p>This password vault manager is a simple tool to help you securely store and manage your passwords.</p>
+            <p>It is designed with a clean and user-friendly interface for easy navigation and vault creation.</p>
+            <p>For any inquiries, please contact us at example@email.com.</p>
+        </div>
+
+        <div class="password-manager-section" id="settings-section" style="display: none;">
+            <h2>Settings</h2>
+            <div id="user-settings">
+                <p><strong>Username:</strong> <span id="settings-username"></span></p>
+                <p><strong>Email:</strong> <span id="settings-email"></span></p>
+                <p><strong>Password:</strong> <span id="settings-password">********</span></p>
+                <p><strong>Birthday:</strong> <span id="settings-birthday"></span></p>
+                <p><strong>Gender:</strong> <span id="settings-gender"></span></p>
+            </div>
+            <button id="logout-button" class="button">Log Out</button> </div>
+    </div>
+
+    <div class="pin-request-overlay" id="pin-request-overlay">
+        <div class="pin-request-box">
+            <h3>Enter PIN to View Password</h3>
+            <input type="text" id="pin-input" placeholder="Enter PIN" inputmode="numeric" pattern="[0-9]*">
+            <button id="submit-pin-button">Submit PIN</button>
+            <button id="cancel-pin-button">Cancel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
